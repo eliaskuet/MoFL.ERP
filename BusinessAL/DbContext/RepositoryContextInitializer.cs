@@ -26,34 +26,34 @@ namespace BusinessAL.DbContext
                 {
                     #region Master Seed
 
-                    if (!context.BloodGroup.Any())
-                    {
-                        context.BloodGroup.AddRange(SeedData.BloodGroups);
-                    }
+                    //if (!context.BloodGroup.Any())
+                    //{
+                    //    context.BloodGroup.AddRange(SeedData.BloodGroups);
+                    //}
                     if (!context.Gender.Any())
                     {
                         context.Gender.AddRange(SeedData.Genders);
                     }
-                    if (!context.Religion.Any())
-                    {
-                        context.Religion.AddRange(SeedData.Religions);
-                    }
-                    if (!context.MaritalStatus.Any())
-                    {
-                        context.MaritalStatus.AddRange(SeedData.MaritalStatus);
-                    }
-                    if (!context.Country.Any())
-                    {
-                        context.Country.AddRange(SeedData.Countries);
-                    }
-                    if (!context.State.Any())
-                    {
-                        context.State.AddRange(SeedData.States);
-                    }
-                    if (!context.City.Any())
-                    {
-                        context.City.AddRange(SeedData.Cities);
-                    }
+                    //if (!context.Religion.Any())
+                    //{
+                    //    context.Religion.AddRange(SeedData.Religions);
+                    //}
+                    //if (!context.MaritalStatus.Any())
+                    //{
+                    //    context.MaritalStatus.AddRange(SeedData.MaritalStatus);
+                    //}
+                    //if (!context.Country.Any())
+                    //{
+                    //    context.Country.AddRange(SeedData.Countries);
+                    //}
+                    //if (!context.State.Any())
+                    //{
+                    //    context.State.AddRange(SeedData.States);
+                    //}
+                    //if (!context.City.Any())
+                    //{
+                    //    context.City.AddRange(SeedData.Cities);
+                    //}
                     if (!context.Office.Any())
                     {
                         context.Office.AddRange(SeedData.Offices);
@@ -70,22 +70,22 @@ namespace BusinessAL.DbContext
                     {
                         context.Section.AddRange(SeedData.Sections);
                     }
-                    if (!context.SalaryGrade.Any())
-                    {
-                        context.SalaryGrade.AddRange(SeedData.SalaryGrades);
-                    }
-                    if (!context.DivisionOrClass.Any())
-                    {
-                        context.DivisionOrClass.AddRange(SeedData.DivisionOrClasss);
-                    }
-                    if (!context.Language.Any())
-                    {
-                        context.Language.AddRange(SeedData.Languages);
-                    }
-                    if (!context.Degree.Any())
-                    {
-                        context.Degree.AddRange(SeedData.Degrees);
-                    }
+                    //if (!context.SalaryGrade.Any())
+                    //{
+                    //    context.SalaryGrade.AddRange(SeedData.SalaryGrades);
+                    //}
+                    //if (!context.DivisionOrClass.Any())
+                    //{
+                    //    context.DivisionOrClass.AddRange(SeedData.DivisionOrClasss);
+                    //}
+                    //if (!context.Language.Any())
+                    //{
+                    //    context.Language.AddRange(SeedData.Languages);
+                    //}
+                    //if (!context.Degree.Any())
+                    //{
+                    //    context.Degree.AddRange(SeedData.Degrees);
+                    //}
 
                     #endregion
 
@@ -101,19 +101,19 @@ namespace BusinessAL.DbContext
 
         public static void RunSeedDataOnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<BloodGroup>().HasData(SeedData.BloodGroups);
+            //builder.Entity<BloodGroup>().HasData(SeedData.BloodGroups);
             builder.Entity<Gender>().HasData(SeedData.Genders);
-            builder.Entity<Religion>().HasData(SeedData.Religions);
-            builder.Entity<MaritalStatus>().HasData(SeedData.MaritalStatus);
+            //builder.Entity<Religion>().HasData(SeedData.Religions);
+            //builder.Entity<MaritalStatus>().HasData(SeedData.MaritalStatus);
             builder.Entity<Country>().HasData(SeedData.Countries);
             builder.Entity<State>().HasData(SeedData.States);
             builder.Entity<City>().HasData(SeedData.Cities);
             builder.Entity<Office>().HasData(SeedData.Offices);
             builder.Entity<Designation>().HasData(SeedData.Designations);
             builder.Entity<Section>().HasData(SeedData.Sections);
-            builder.Entity<SalaryGrade>().HasData(SeedData.SalaryGrades);
-            builder.Entity<DivisionOrClass>().HasData(SeedData.DivisionOrClasss);
-            builder.Entity<Language>().HasData(SeedData.Languages);
+            //builder.Entity<SalaryGrade>().HasData(SeedData.SalaryGrades);
+            //builder.Entity<DivisionOrClass>().HasData(SeedData.DivisionOrClasss);
+            //builder.Entity<Language>().HasData(SeedData.Languages);
             builder.Entity<Degree>().HasData(SeedData.Degrees);
         }
 

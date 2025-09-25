@@ -3,6 +3,26 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome to MoFL-ERP Dashboard</h1>
+    @* <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> *@
+</div>
+<br />
+<div class="row">
+    <div class="col-lg-6 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-title">
+                <h3>Conference Room Booking System</h3>
+            </div>
+            <div class="card-body">
+                <div class=" d-grid gap-2">
+                    <a asp-controller="ConferenceRoomBookings" asp-action="create" class="btn btn-outline-primary">সম্মেলন কক্ষ বুকিং দিন</a>
+                    <a asp-controller="ConferenceRoomBookings" asp-action="index" asp-route-flag="100" class="btn btn-outline-info">আজকের অনুষ্ঠানের সময়সূচী</a>
+                    <a asp-controller="ConferenceRoomBookings" asp-action="index" asp-route-flag="1" class="btn btn-outline-success">সম্মেলন কক্ষে অনুষ্ঠানের সময়সূচী</a>
+                    <a asp-controller="ConferenceRoomBookings" asp-action="index" asp-route-flag="7" class="btn btn-outline-warning">আগামী এক সপ্তাহের অনুষ্ঠানের সময়সূচী</a>
+                    <a asp-controller="ConferenceRoomBookings" asp-action="index" asp-route-flag="14" class="btn btn-outline-warning">আগামী দুই সপ্তাহের অনুষ্ঠানের সময়সূচী</a>
+                    <a asp-controller="ConferenceRoomBookings" asp-action="index" asp-route-flag="-1" class="btn btn-outline-secondary">পূর্বের অনুষ্ঠানের সময়সূচী</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

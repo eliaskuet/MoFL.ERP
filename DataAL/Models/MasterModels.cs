@@ -13,18 +13,18 @@ namespace DataAL.Models
     #region Common
 
 
-    public class Nationality : BaseMasterEntity
-    {
-        [Required]
-        [Display(AutoGenerateField = false)]
-        [Key]
-        public int NationalityId { get; set; }
+    //public class Nationality : BaseMasterEntity
+    //{
+    //    [Required]
+    //    [Display(AutoGenerateField = false)]
+    //    [Key]
+    //    public int NationalityId { get; set; }
 
-        [Required(ErrorMessage = "Nationality নাম প্রদান করুন।")]
-        [StringLength(256)]
-        [Display(Name = "Nationality")]
-        public string Name { get; set; }
-    }
+    //    [Required(ErrorMessage = "Nationality নাম প্রদান করুন।")]
+    //    [StringLength(256)]
+    //    [Display(Name = "Nationality")]
+    //    public string Name { get; set; }
+    //}
 
     public class Country : BaseMasterEntity
     {
@@ -119,18 +119,18 @@ namespace DataAL.Models
         public virtual City City { get; set; }
     }
 
-    public class BloodGroup : BaseMasterEntity
-    {
-        [Required]
-        [Key]
-        public int BloodGroupId { get; set; }
+    //public class BloodGroup : BaseMasterEntity
+    //{
+    //    [Required]
+    //    [Key]
+    //    public int BloodGroupId { get; set; }
 
-        [Required]
-        [StringLength(64)]
-        [Display(Name = "Blood Group")]
-        public string Name { get; set; }
+    //    [Required]
+    //    [StringLength(64)]
+    //    [Display(Name = "Blood Group")]
+    //    public string Name { get; set; }
 
-    }
+    //}
 
     public class Gender : BaseMasterEntity
     {
@@ -144,29 +144,29 @@ namespace DataAL.Models
         public string Name { get; set; }
     }
 
-    public class Religion : BaseMasterEntity
-    {
-        [Required]
-        [Key]
-        public int ReligionId { get; set; }
+    //public class Religion : BaseMasterEntity
+    //{
+    //    [Required]
+    //    [Key]
+    //    public int ReligionId { get; set; }
 
-        [Required]
-        [StringLength(128)]
-        [Display(Name = "Religion")]
-        public string Name { get; set; }
-    }
+    //    [Required]
+    //    [StringLength(128)]
+    //    [Display(Name = "Religion")]
+    //    public string Name { get; set; }
+    //}
 
-    public class MaritalStatus : BaseMasterEntity
-    {
-        [Required]
-        [Key]
-        public int MaritalStatusId { get; set; }
+    //public class MaritalStatus : BaseMasterEntity
+    //{
+    //    [Required]
+    //    [Key]
+    //    public int MaritalStatusId { get; set; }
 
-        [Required]
-        [StringLength(128)]
-        [Display(Name = "Marital Status")]
-        public string Name { get; set; }
-    }
+    //    [Required]
+    //    [StringLength(128)]
+    //    [Display(Name = "Marital Status")]
+    //    public string Name { get; set; }
+    //}
 
     public class Designation : BaseMasterEntity
     {
@@ -226,41 +226,41 @@ namespace DataAL.Models
         public int? Order { get; set; }
     }
 
-    public class SalaryGrade : BaseMasterEntity
-    {
-        [Required]
-        [Display(AutoGenerateField = false)]
-        [Key]
-        public int SalaryGradeId { get; set; }
-        [Display(Name = "Salary Grade")]
-        public string Name { get; set; }
-        [Display(Name = "Sequence")]
-        public int Order { get; set; }
-    }
+    //public class SalaryGrade : BaseMasterEntity
+    //{
+    //    [Required]
+    //    [Display(AutoGenerateField = false)]
+    //    [Key]
+    //    public int SalaryGradeId { get; set; }
+    //    [Display(Name = "Salary Grade")]
+    //    public string Name { get; set; }
+    //    [Display(Name = "Sequence")]
+    //    public int Order { get; set; }
+    //}
 
-    public class DivisionOrClass : BaseMasterEntity
-    {
-        [Required]
-        [Display(AutoGenerateField = false)]
-        [Key]
-        public int DivisionOrClassId { get; set; }
-        [Display(Name = "ডিভিশন/ক্লাস")]
-        public string Name { get; set; }
-        [Display(Name = "Sequence")]
-        public int Order { get; set; }
-    }
+    //public class DivisionOrClass : BaseMasterEntity
+    //{
+    //    [Required]
+    //    [Display(AutoGenerateField = false)]
+    //    [Key]
+    //    public int DivisionOrClassId { get; set; }
+    //    [Display(Name = "ডিভিশন/ক্লাস")]
+    //    public string Name { get; set; }
+    //    [Display(Name = "Sequence")]
+    //    public int Order { get; set; }
+    //}
 
-    public class Language : BaseMasterEntity
-    {
-        [Required]
-        [Display(AutoGenerateField = false)]
-        [Key]
-        public int LanguageId { get; set; }
-        [Display(Name = "Language")]
-        public string Name { get; set; }
-        [Display(Name = "Sequence")]
-        public int Order { get; set; }
-    }
+    //public class Language : BaseMasterEntity
+    //{
+    //    [Required]
+    //    [Display(AutoGenerateField = false)]
+    //    [Key]
+    //    public int LanguageId { get; set; }
+    //    [Display(Name = "Language")]
+    //    public string Name { get; set; }
+    //    [Display(Name = "Sequence")]
+    //    public int Order { get; set; }
+    //}
 
     public class Degree : BaseMasterEntity
     {
@@ -273,6 +273,22 @@ namespace DataAL.Models
         [Display(Name = "Sequence")]
         public int Order { get; set; }
     }
+
+    #region Event Related
+
+    public class EventType : BaseMasterEntity
+    {
+        [Required]
+        [Display(AutoGenerateField = false)]
+        [Key]
+        public int EventTypeId { get; set; }
+        [Display(Name = "ইভেন্ট টাইপ")]
+        public string Name { get; set; }
+        [Display(Name = "Sequence")]
+        public int Order { get; set; }
+    }
+
+    #endregion
 
     #endregion
 }

@@ -1,0 +1,121 @@
+﻿@model IEnumerable<DataAL.Models.ConferenceRoomBooking>
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    ViewData["Title"] = "Index";
+    string message = "অনুষ্ঠানের সময়সূচী";
+    int count = 1;
+    var flag = HttpContextAccessor.HttpContext.Request.Query["flag"].ToString();
+    switch (flag)
+    {
+        case "0":
+            message = "আজকের অনুষ্ঠানের সময়সূচী";
+            break;
+        case "1":
+            message = "সম্মেলন কক্ষে অনুষ্ঠানের সময়সূচী";
+            break;
+        case "-1":
+            message = "পূর্বের অনুষ্ঠানের সময়সূচী";
+            break;
+        default:
+            break;
+    }
+}
+
+<h3>@message</h3>
+<div class="row">
+    <div class="col-md-12 grid-margin">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>&nbsp;</div>
+            <div>
+                <a asp-action="create" class="btn btn-outline-primary btn-icon-text btn-rounded btn-resize">
+                    <i class="ti-desktop"></i>&nbsp;কনফারেন্স রুম বুকিং দিন
+                </a>
+                <a asp-action="index" asp-controller="home" class="btn btn-outline-primary btn-icon-text btn-rounded btn-resize">
+                    <i class="ti-desktop"></i>&nbsp;Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                ক্রমিক
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfEvent)
+            </th>
+            @* <th>
+                @Html.DisplayNameFor(model => model.StartTime)
+            </th> *@
+            <th>
+                @Html.DisplayNameFor(model => model.Subject)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ChairpersonId)
+            </th>
+            @* <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th> *@
+            @* <th>
+                @Html.DisplayNameFor(model => model.Office)
+            </th> *@
+            <th>
+                @Html.DisplayNameFor(model => model.TentativeEndTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EventTypeId)
+            </th>
+            @* <th>
+                @Html.DisplayNameFor(model => model.IsPublished)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedByUserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedById)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModificationDate)
+            </th> *@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @(count++)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfEvent)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Subject)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Chairperson.ChairpersonName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TentativeEndTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EventType.Name)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ConferenceRoomBookingId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ConferenceRoomBookingId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ConferenceRoomBookingId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

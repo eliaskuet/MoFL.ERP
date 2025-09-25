@@ -14,23 +14,23 @@ namespace DataAL.SeedData
     {
         #region Master Seed
 
-        public static List<BloodGroup> BloodGroups
-        {
-            get
-            {
-                List<BloodGroup> items = new List<BloodGroup>();
+        //public static List<BloodGroup> BloodGroups
+        //{
+        //    get
+        //    {
+        //        List<BloodGroup> items = new List<BloodGroup>();
 
-                items.Add(new BloodGroup { BloodGroupId = 1, IsPublished = true, Name = "A+" });
-                items.Add(new BloodGroup { BloodGroupId = 2, IsPublished = true, Name = "A-" });
-                items.Add(new BloodGroup { BloodGroupId = 3, IsPublished = true, Name = "B+" });
-                items.Add(new BloodGroup { BloodGroupId = 4, IsPublished = true, Name = "B-" });
-                items.Add(new BloodGroup { BloodGroupId = 5, IsPublished = true, Name = "AB+" });
-                items.Add(new BloodGroup { BloodGroupId = 6, IsPublished = true, Name = "AB-" });
-                items.Add(new BloodGroup { BloodGroupId = 7, IsPublished = true, Name = "0+" });
-                items.Add(new BloodGroup { BloodGroupId = 8, IsPublished = true, Name = "0-" });
-                return items;
-            }
-        }
+        //        items.Add(new BloodGroup { BloodGroupId = 1, IsPublished = true, Name = "A+" });
+        //        items.Add(new BloodGroup { BloodGroupId = 2, IsPublished = true, Name = "A-" });
+        //        items.Add(new BloodGroup { BloodGroupId = 3, IsPublished = true, Name = "B+" });
+        //        items.Add(new BloodGroup { BloodGroupId = 4, IsPublished = true, Name = "B-" });
+        //        items.Add(new BloodGroup { BloodGroupId = 5, IsPublished = true, Name = "AB+" });
+        //        items.Add(new BloodGroup { BloodGroupId = 6, IsPublished = true, Name = "AB-" });
+        //        items.Add(new BloodGroup { BloodGroupId = 7, IsPublished = true, Name = "0+" });
+        //        items.Add(new BloodGroup { BloodGroupId = 8, IsPublished = true, Name = "0-" });
+        //        return items;
+        //    }
+        //}
 
         public static List<Gender> Genders
         {
@@ -43,37 +43,37 @@ namespace DataAL.SeedData
             }
         }
 
-        public static List<Religion> Religions
-        {
-            get
-            {
-                List<Religion> items = new List<Religion>();
+        //public static List<Religion> Religions
+        //{
+        //    get
+        //    {
+        //        List<Religion> items = new List<Religion>();
 
-                items.Add(new Religion { ReligionId = 1, Name = "ইসলাম", IsPublished = true });
-                items.Add(new Religion { ReligionId = 2, Name = "খ্রিষ্টান", IsPublished = true });
-                items.Add(new Religion { ReligionId = 3, Name = "হিন্দু", IsPublished = true });
-                items.Add(new Religion { ReligionId = 4, Name = "যীশু", IsPublished = true });
-                items.Add(new Religion { ReligionId = 5, Name = "বৌদ্ধ", IsPublished = true });
+        //        items.Add(new Religion { ReligionId = 1, Name = "ইসলাম", IsPublished = true });
+        //        items.Add(new Religion { ReligionId = 2, Name = "খ্রিষ্টান", IsPublished = true });
+        //        items.Add(new Religion { ReligionId = 3, Name = "হিন্দু", IsPublished = true });
+        //        items.Add(new Religion { ReligionId = 4, Name = "যীশু", IsPublished = true });
+        //        items.Add(new Religion { ReligionId = 5, Name = "বৌদ্ধ", IsPublished = true });
 
-                return items;
-            }
-        }
+        //        return items;
+        //    }
+        //}
 
-        public static List<MaritalStatus> MaritalStatus
-        {
-            get
-            {
-                List<MaritalStatus> items = new List<MaritalStatus>();
+        //public static List<MaritalStatus> MaritalStatus
+        //{
+        //    get
+        //    {
+        //        List<MaritalStatus> items = new List<MaritalStatus>();
 
-                items.Add(new MaritalStatus { MaritalStatusId = 1, Name = "অবিবাহিত", IsPublished = true });
-                items.Add(new MaritalStatus { MaritalStatusId = 2, Name = "বিবাহিত", IsPublished = true });
-                items.Add(new MaritalStatus { MaritalStatusId = 3, Name = "তালাকপ্রাপ্ত", IsPublished = true });
-                items.Add(new MaritalStatus { MaritalStatusId = 4, Name = "বিছিন্ন", IsPublished = true });
-                items.Add(new MaritalStatus { MaritalStatusId = 5, Name = "বিধবা", IsPublished = true });
+        //        items.Add(new MaritalStatus { MaritalStatusId = 1, Name = "অবিবাহিত", IsPublished = true });
+        //        items.Add(new MaritalStatus { MaritalStatusId = 2, Name = "বিবাহিত", IsPublished = true });
+        //        items.Add(new MaritalStatus { MaritalStatusId = 3, Name = "তালাকপ্রাপ্ত", IsPublished = true });
+        //        items.Add(new MaritalStatus { MaritalStatusId = 4, Name = "বিছিন্ন", IsPublished = true });
+        //        items.Add(new MaritalStatus { MaritalStatusId = 5, Name = "বিধবা", IsPublished = true });
 
-                return items;
-            }
-        }
+        //        return items;
+        //    }
+        //}
 
         public static List<Country> Countries
         {
@@ -482,64 +482,64 @@ namespace DataAL.SeedData
             }
         }
 
-        public static List<SalaryGrade> SalaryGrades
-        {
-            get
-            {
-                List<SalaryGrade> items = new List<SalaryGrade>();
+        //public static List<SalaryGrade> SalaryGrades
+        //{
+        //    get
+        //    {
+        //        List<SalaryGrade> items = new List<SalaryGrade>();
 
-                items.Add(new SalaryGrade { SalaryGradeId = 1, Name = "গ্রেড-১", IsPublished = true, Order = 1 });
-                items.Add(new SalaryGrade { SalaryGradeId = 2, Name = "গ্রেড-২", IsPublished = true, Order = 2 });
-                items.Add(new SalaryGrade { SalaryGradeId = 3, Name = "গ্রেড-৩", IsPublished = true, Order = 3 });
-                items.Add(new SalaryGrade { SalaryGradeId = 4, Name = "গ্রেড-৪", IsPublished = true, Order = 4 });
-                items.Add(new SalaryGrade { SalaryGradeId = 5, Name = "গ্রেড-৫", IsPublished = true, Order = 5 });
-                items.Add(new SalaryGrade { SalaryGradeId = 6, Name = "গ্রেড-৬", IsPublished = true, Order = 6 });
-                items.Add(new SalaryGrade { SalaryGradeId = 7, Name = "গ্রেড-৭", IsPublished = true, Order = 7 });
-                items.Add(new SalaryGrade { SalaryGradeId = 8, Name = "গ্রেড-৮", IsPublished = true, Order = 8 });
-                items.Add(new SalaryGrade { SalaryGradeId = 9, Name = "গ্রেড-৯", IsPublished = true, Order = 9 });
-                items.Add(new SalaryGrade { SalaryGradeId = 10, Name = "গ্রেড-১০", IsPublished = true, Order = 10 });
-                items.Add(new SalaryGrade { SalaryGradeId = 11, Name = "গ্রেড-১১", IsPublished = true, Order = 11 });
-                items.Add(new SalaryGrade { SalaryGradeId = 12, Name = "গ্রেড-১২", IsPublished = true, Order = 12 });
-                items.Add(new SalaryGrade { SalaryGradeId = 13, Name = "গ্রেড-১৩", IsPublished = true, Order = 13 });
-                items.Add(new SalaryGrade { SalaryGradeId = 14, Name = "গ্রেড-১৪", IsPublished = true, Order = 14 });
-                items.Add(new SalaryGrade { SalaryGradeId = 15, Name = "গ্রেড-১৫", IsPublished = true, Order = 15 });
-                items.Add(new SalaryGrade { SalaryGradeId = 16, Name = "গ্রেড-১৬", IsPublished = true, Order = 16 });
-                items.Add(new SalaryGrade { SalaryGradeId = 17, Name = "গ্রেড-১৭", IsPublished = true, Order = 17 });
-                items.Add(new SalaryGrade { SalaryGradeId = 18, Name = "গ্রেড-১৮", IsPublished = true, Order = 18 });
-                items.Add(new SalaryGrade { SalaryGradeId = 19, Name = "গ্রেড-১৯", IsPublished = true, Order = 19 });
-                items.Add(new SalaryGrade { SalaryGradeId = 20, Name = "গ্রেড-২০", IsPublished = true, Order = 20 });
-                return items;
-            }
-        }
+        //        items.Add(new SalaryGrade { SalaryGradeId = 1, Name = "গ্রেড-১", IsPublished = true, Order = 1 });
+        //        items.Add(new SalaryGrade { SalaryGradeId = 2, Name = "গ্রেড-২", IsPublished = true, Order = 2 });
+        //        items.Add(new SalaryGrade { SalaryGradeId = 3, Name = "গ্রেড-৩", IsPublished = true, Order = 3 });
+        //        items.Add(new SalaryGrade { SalaryGradeId = 4, Name = "গ্রেড-৪", IsPublished = true, Order = 4 });
+        //        items.Add(new SalaryGrade { SalaryGradeId = 5, Name = "গ্রেড-৫", IsPublished = true, Order = 5 });
+        //        items.Add(new SalaryGrade { SalaryGradeId = 6, Name = "গ্রেড-৬", IsPublished = true, Order = 6 });
+        //        items.Add(new SalaryGrade { SalaryGradeId = 7, Name = "গ্রেড-৭", IsPublished = true, Order = 7 });
+        //        items.Add(new SalaryGrade { SalaryGradeId = 8, Name = "গ্রেড-৮", IsPublished = true, Order = 8 });
+        //        items.Add(new SalaryGrade { SalaryGradeId = 9, Name = "গ্রেড-৯", IsPublished = true, Order = 9 });
+        //        items.Add(new SalaryGrade { SalaryGradeId = 10, Name = "গ্রেড-১০", IsPublished = true, Order = 10 });
+        //        items.Add(new SalaryGrade { SalaryGradeId = 11, Name = "গ্রেড-১১", IsPublished = true, Order = 11 });
+        //        items.Add(new SalaryGrade { SalaryGradeId = 12, Name = "গ্রেড-১২", IsPublished = true, Order = 12 });
+        //        items.Add(new SalaryGrade { SalaryGradeId = 13, Name = "গ্রেড-১৩", IsPublished = true, Order = 13 });
+        //        items.Add(new SalaryGrade { SalaryGradeId = 14, Name = "গ্রেড-১৪", IsPublished = true, Order = 14 });
+        //        items.Add(new SalaryGrade { SalaryGradeId = 15, Name = "গ্রেড-১৫", IsPublished = true, Order = 15 });
+        //        items.Add(new SalaryGrade { SalaryGradeId = 16, Name = "গ্রেড-১৬", IsPublished = true, Order = 16 });
+        //        items.Add(new SalaryGrade { SalaryGradeId = 17, Name = "গ্রেড-১৭", IsPublished = true, Order = 17 });
+        //        items.Add(new SalaryGrade { SalaryGradeId = 18, Name = "গ্রেড-১৮", IsPublished = true, Order = 18 });
+        //        items.Add(new SalaryGrade { SalaryGradeId = 19, Name = "গ্রেড-১৯", IsPublished = true, Order = 19 });
+        //        items.Add(new SalaryGrade { SalaryGradeId = 20, Name = "গ্রেড-২০", IsPublished = true, Order = 20 });
+        //        return items;
+        //    }
+        //}
 
-        public static List<DivisionOrClass> DivisionOrClasss
-        {
-            get
-            {
-                List<DivisionOrClass> items = new List<DivisionOrClass>();
+        //public static List<DivisionOrClass> DivisionOrClasss
+        //{
+        //    get
+        //    {
+        //        List<DivisionOrClass> items = new List<DivisionOrClass>();
 
-                items.Add(new DivisionOrClass { DivisionOrClassId = 1, Name = "প্রথম", Order = 1, IsPublished = true });
-                items.Add(new DivisionOrClass { DivisionOrClassId = 2, Name = "দ্বিতীয়", Order = 2, IsPublished = true });
-                items.Add(new DivisionOrClass { DivisionOrClassId = 3, Name = "তৃতীয়", Order = 3, IsPublished = true });
-                items.Add(new DivisionOrClass { DivisionOrClassId = 4, Name = "চতুর্থ", Order = 4, IsPublished = true });
-                return items;
-            }
-        }
+        //        items.Add(new DivisionOrClass { DivisionOrClassId = 1, Name = "প্রথম", Order = 1, IsPublished = true });
+        //        items.Add(new DivisionOrClass { DivisionOrClassId = 2, Name = "দ্বিতীয়", Order = 2, IsPublished = true });
+        //        items.Add(new DivisionOrClass { DivisionOrClassId = 3, Name = "তৃতীয়", Order = 3, IsPublished = true });
+        //        items.Add(new DivisionOrClass { DivisionOrClassId = 4, Name = "চতুর্থ", Order = 4, IsPublished = true });
+        //        return items;
+        //    }
+        //}
 
-        public static List<Language> Languages
-        {
-            get
-            {
-                List<Language> items = new List<Language>();
+        //public static List<Language> Languages
+        //{
+        //    get
+        //    {
+        //        List<Language> items = new List<Language>();
 
-                items.Add(new Language { LanguageId = 1, Name = "বাংলা", Order = 1, IsPublished = true });
-                items.Add(new Language { LanguageId = 2, Name = "ইংরেজি", Order = 2, IsPublished = true });
-                items.Add(new Language { LanguageId = 3, Name = "হিন্দি", Order = 3, IsPublished = true });
-                items.Add(new Language { LanguageId = 4, Name = "আরবি", Order = 4, IsPublished = true });
-                items.Add(new Language { LanguageId = 5, Name = "উর্দু", Order = 5, IsPublished = true });
-                return items;
-            }
-        }
+        //        items.Add(new Language { LanguageId = 1, Name = "বাংলা", Order = 1, IsPublished = true });
+        //        items.Add(new Language { LanguageId = 2, Name = "ইংরেজি", Order = 2, IsPublished = true });
+        //        items.Add(new Language { LanguageId = 3, Name = "হিন্দি", Order = 3, IsPublished = true });
+        //        items.Add(new Language { LanguageId = 4, Name = "আরবি", Order = 4, IsPublished = true });
+        //        items.Add(new Language { LanguageId = 5, Name = "উর্দু", Order = 5, IsPublished = true });
+        //        return items;
+        //    }
+        //}
 
         public static List<Degree> Degrees
         {

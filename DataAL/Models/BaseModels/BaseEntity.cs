@@ -14,11 +14,11 @@ namespace DataAL.Models.BaseModels
         [Display(Name = "Active?")]
         public bool IsPublished { get; set; }
         public int CreatedByUserId { get; set; }
-        [Display(Name = "Added")]
+        [Display(Name = "Added by")]
         [DataType(DataType.Date)]
         public DateTime CreatedDate { get; set; }
         public int ModifiedById { get; set; }
-        [Display(Name = "Modified")]
+        [Display(Name = "Modifier")]
         [DataType(DataType.Date)]
         public DateTime ModificationDate { get; set; }
     }
