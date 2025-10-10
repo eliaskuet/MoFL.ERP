@@ -137,8 +137,17 @@ namespace BusinessAL.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("DesignationId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("GoogleEmail")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsPublished")
                         .HasColumnType("bit");
+
+                    b.Property<string>("Mobile")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("ModificationDate")
                         .HasColumnType("datetime2");
@@ -146,7 +155,18 @@ namespace BusinessAL.Migrations
                     b.Property<int>("ModifiedById")
                         .HasColumnType("int");
 
+                    b.Property<string>("OfficialEmail")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Sequence")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ShortDescription")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("ChairpersonId");
+
+                    b.HasIndex("DesignationId");
 
                     b.ToTable("Chairperson");
                 });
@@ -702,8 +722,20 @@ namespace BusinessAL.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ConferenceRoomBookingId"));
 
+                    b.Property<string>("ChairPersonDesignation")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ChairPersonName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("ChairpersonId")
                         .HasColumnType("int");
+
+                    b.Property<string>("ContactPersonMobile")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ContactPersonaName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CreatedByUserId")
                         .HasColumnType("int");
@@ -732,6 +764,12 @@ namespace BusinessAL.Migrations
                     b.Property<int>("OfficeId")
                         .HasColumnType("int");
 
+                    b.Property<string>("OfficeOrderUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("OriginalName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("StartTime")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -742,6 +780,15 @@ namespace BusinessAL.Migrations
 
                     b.Property<DateTime>("TentativeEndTime")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("ZoomMeetingId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ZoomMeetingLink")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ZoomMeetingPasscode")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ConferenceRoomBookingId");
 
@@ -2264,72 +2311,170 @@ namespace BusinessAL.Migrations
                         {
                             DesignationId = 1,
                             IsPublished = true,
-                            Name = "সচিব",
+                            Name = "উপদেষ্টা",
                             Order = 1
                         },
                         new
                         {
                             DesignationId = 2,
                             IsPublished = true,
-                            Name = "অতিরিক্ত সচিব",
+                            Name = "সচিব",
                             Order = 2
                         },
                         new
                         {
                             DesignationId = 3,
                             IsPublished = true,
-                            Name = "যুগ্ম সচিব",
+                            Name = "অতিরিক্ত সচিব",
                             Order = 3
                         },
                         new
                         {
                             DesignationId = 4,
                             IsPublished = true,
-                            Name = "উপসচিব",
+                            Name = "যুগ্ম সচিব",
                             Order = 4
                         },
                         new
                         {
                             DesignationId = 5,
                             IsPublished = true,
-                            Name = "সিস্টেম এনালিস্ট",
+                            Name = "উপসচিব",
                             Order = 5
                         },
                         new
                         {
                             DesignationId = 6,
                             IsPublished = true,
-                            Name = "সিনিয়র সহকারি সচিব",
+                            Name = "সিস্টেম এনালিস্ট",
                             Order = 6
                         },
                         new
                         {
                             DesignationId = 7,
                             IsPublished = true,
-                            Name = "প্রোগ্রামার",
+                            Name = "সিনিয়র সহকারি সচিব",
                             Order = 7
                         },
                         new
                         {
                             DesignationId = 8,
                             IsPublished = true,
-                            Name = "সহকারি সচিব",
+                            Name = "প্রোগ্রামার",
                             Order = 8
                         },
                         new
                         {
                             DesignationId = 9,
                             IsPublished = true,
-                            Name = "সহকারি প্রোগ্রামার",
+                            Name = "সহকারি সচিব",
                             Order = 9
                         },
                         new
                         {
                             DesignationId = 10,
                             IsPublished = true,
-                            Name = "হিসাব রক্ষণ কর্মকর্তা",
+                            Name = "সহকারি প্রোগ্রামার",
                             Order = 10
+                        },
+                        new
+                        {
+                            DesignationId = 11,
+                            IsPublished = true,
+                            Name = "হিসাব রক্ষণ কর্মকর্তা",
+                            Order = 11
                         });
+                });
+
+            modelBuilder.Entity("DataAL.Models.Document", b =>
+                {
+                    b.Property<int>("DocumentId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DocumentId"));
+
+                    b.Property<int>("CreatedByUserId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("DocumentTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FileExtension")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FileName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("FileSize")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool>("IsPublished")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("ModificationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ModifiedById")
+                        .HasColumnType("int");
+
+                    b.Property<int>("OfficeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("OriginalName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("UploadedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("DocumentId");
+
+                    b.HasIndex("DocumentTypeId");
+
+                    b.HasIndex("OfficeId");
+
+                    b.ToTable("Document");
+                });
+
+            modelBuilder.Entity("DataAL.Models.DocumentCategory", b =>
+                {
+                    b.Property<int>("DocumentCategoryId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("DocumentCategoryId"));
+
+                    b.Property<string>("CategoryName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("CreatedByUserId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsPublished")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("ModificationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ModifiedById")
+                        .HasColumnType("int");
+
+                    b.HasKey("DocumentCategoryId");
+
+                    b.ToTable("DocumentCategory");
                 });
 
             modelBuilder.Entity("DataAL.Models.EventType", b =>
@@ -2352,6 +2497,33 @@ namespace BusinessAL.Migrations
                     b.HasKey("EventTypeId");
 
                     b.ToTable("EventType");
+                });
+
+            modelBuilder.Entity("DataAL.Models.FileType", b =>
+                {
+                    b.Property<int>("FileTypeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FileTypeId"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FileExtension")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsPublished")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("TypeName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("FileTypeId");
+
+                    b.ToTable("FileType");
                 });
 
             modelBuilder.Entity("DataAL.Models.Gender", b =>
@@ -3074,10 +3246,12 @@ namespace BusinessAL.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -3114,10 +3288,12 @@ namespace BusinessAL.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -3125,6 +3301,17 @@ namespace BusinessAL.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("DataAL.Models.Chairperson", b =>
+                {
+                    b.HasOne("DataAL.Models.Designation", "Designation")
+                        .WithMany()
+                        .HasForeignKey("DesignationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Designation");
                 });
 
             modelBuilder.Entity("DataAL.Models.City", b =>
@@ -3161,6 +3348,23 @@ namespace BusinessAL.Migrations
                     b.Navigation("Chairperson");
 
                     b.Navigation("EventType");
+
+                    b.Navigation("Office");
+                });
+
+            modelBuilder.Entity("DataAL.Models.Document", b =>
+                {
+                    b.HasOne("DataAL.Models.DocumentCategory", "DocumentType")
+                        .WithMany()
+                        .HasForeignKey("DocumentTypeId");
+
+                    b.HasOne("DataAL.Models.Office", "Office")
+                        .WithMany()
+                        .HasForeignKey("OfficeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("DocumentType");
 
                     b.Navigation("Office");
                 });

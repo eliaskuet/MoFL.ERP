@@ -87,6 +87,15 @@ namespace BusinessAL.DbContext
                     //    context.Degree.AddRange(SeedData.Degrees);
                     //}
 
+                    if (!context.FileType.Any())
+                    {
+                        context.FileType.AddRange(SeedData.FileTypes);
+                    }
+                    if (!context.DocumentCategory.Any())
+                    {
+                        context.DocumentCategory.AddRange(SeedData.DocumentCategories);
+                    }
+
                     #endregion
 
                     context.SaveChanges();

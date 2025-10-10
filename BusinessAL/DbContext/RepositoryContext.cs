@@ -45,6 +45,9 @@ namespace BusinessAL.DbContext
 
         //public DbSet<PersonalInformation> PersonalInformation { get; set; }
 
+        #endregion
+
+
         #region Conference Room Booking
         
         public DbSet<ConferenceRoomBooking> ConferenceRoomBooking { get; set; }
@@ -66,6 +69,13 @@ namespace BusinessAL.DbContext
         //public DbSet<ConferenceRoomBookingComment> ConferenceRoomBookingComments { get; set; }
 
         #endregion
+
+        #region Document MS
+
+        public DbSet<FileType> FileType { get; set; }
+        public DbSet<DocumentCategory> DocumentCategory { get; set; }
+        public DbSet<Document> Document { get; set; }
+
         #endregion
     }
 }

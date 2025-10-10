@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-6">Welcome to Document Management System</h1>
+    @* <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> *@
+</div>
+<br />
+<div class="row">
+    <div class="col-lg-4 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-title text-center">
+                <br />
+                <h3>ডকুমেন্ট ম্যানেজমেন্ট সিস্টেম</h3>
+            </div>
+            <div class="card-body">
+                <div class=" d-grid gap-2">
+                    <a asp-controller="Documents" asp-action="upload" class="btn btn-outline-primary">ডকুমেন্ট আপলোড</a>
+                    <a asp-controller="Documents" asp-action="index" asp-route-flag="100" class="btn btn-outline-info">ডকুমেন্টের তালিকা</a>
+                    <a asp-controller="Documents" asp-action="filecategories" asp-route-flag="100" class="btn btn-outline-danger">ডকুমেন্টের ধরণ</a>
+                    <a asp-controller="Documents" asp-action="index" asp-route-flag="1" class="btn btn-outline-success">ডকুমেন্ট অনুসন্ধান</a>
+                    <a href="#" class="btn btn-outline-dark">ফোল্ডার আকারে তালিকা</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

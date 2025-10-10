@@ -32,59 +32,36 @@
                 <a asp-action="create" class="btn btn-outline-primary btn-icon-text btn-rounded btn-resize">
                     <i class="ti-desktop"></i>&nbsp;কনফারেন্স রুম বুকিং দিন
                 </a>
-                <a asp-action="index" asp-controller="home" class="btn btn-outline-primary btn-icon-text btn-rounded btn-resize">
-                    <i class="ti-desktop"></i>&nbsp;Dashboard
+                <a asp-action="index" asp-controller="ConferenceRoomBookings" class="btn btn-outline-primary btn-icon-text btn-rounded btn-resize">
+                    <i class="bi bi-house"></i>&nbsp;Dashboard
                 </a>
             </div>
         </div>
     </div>
 </div>
 <br />
-<table class="table">
+<table class="table table-striped table-hover">
     <thead>
         <tr>
             <th>
                 ক্রমিক
             </th>
+            <th>তারিখ</th>
             <th>
                 @Html.DisplayNameFor(model => model.DateOfEvent)
             </th>
-            @* <th>
-                @Html.DisplayNameFor(model => model.StartTime)
-            </th> *@
             <th>
                 @Html.DisplayNameFor(model => model.Subject)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ChairpersonId)
             </th>
-            @* <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th> *@
-            @* <th>
-                @Html.DisplayNameFor(model => model.Office)
-            </th> *@
             <th>
                 @Html.DisplayNameFor(model => model.TentativeEndTime)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.EventTypeId)
             </th>
-            @* <th>
-                @Html.DisplayNameFor(model => model.IsPublished)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedByUserId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ModifiedById)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ModificationDate)
-            </th> *@
             <th></th>
         </tr>
     </thead>
@@ -96,24 +73,29 @@
                     @(count++)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.DateOfEvent)
+                    @item.DateOfEvent.ToString("dd/MM/yyyy")
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Subject)
+                    @Html.DisplayFor(modelItem => item.DateOfEvent.TimeOfDay)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Chairperson.ChairpersonName)
+                    <a asp-action="Details" asp-route-id="@item.ConferenceRoomBookingId">
+                        @Html.DisplayFor(modelItem => item.Subject)
+                    </a>
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.TentativeEndTime)
+                    @Html.DisplayFor(modelItem => item.Chairperson.ChairpersonName) &nbsp; @(string.IsNullOrWhiteSpace(item.Chairperson.ShortDescription)?string.Empty: " (" + item.Chairperson.ShortDescription + ")")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TentativeEndTime.TimeOfDay)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.EventType.Name)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.ConferenceRoomBookingId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.ConferenceRoomBookingId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.ConferenceRoomBookingId">Delete</a>
+                    <a asp-action="Shift" asp-route-id="@item.ConferenceRoomBookingId"><i class="bi bi-repeat text-danger"></i>Shift</a>
+                    <a asp-action="Edit" asp-route-id="@item.ConferenceRoomBookingId"><i class="bi bi-pencil text-success"></i></a>
+                    <a asp-action="Delete" asp-route-id="@item.ConferenceRoomBookingId"><i class="bi bi-trash text-danger"></i></a>
                 </td>
             </tr>
         }

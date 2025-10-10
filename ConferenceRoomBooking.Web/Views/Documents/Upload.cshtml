@@ -1,0 +1,21 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Upload Document";
+}
+
+<h2>ডকুমেন্ট আপলোড</h2>
+<form asp-action="Upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" required />
+    <button type="submit" class="btn btn-primary">আপলোড</button>
+</form>
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="text-danger">
+        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <div>@error.ErrorMessage</div>
+        }
+    </div>
+}

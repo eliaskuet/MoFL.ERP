@@ -1,0 +1,98 @@
+﻿@model IEnumerable<DataAL.Models.Document>
+@{
+    ViewData["Title"] = "Documents";
+    int count = 1;
+}
+
+<h3>ডকুমেন্টের তালিকা</h3>
+<a asp-action="Upload" class="btn btn-outline-success">Upload New Document</a>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>ডকুমেন্টের নাম</th>
+            <th>সাইজ</th>
+            <th>ফাইলের ধরণ</th>
+            <th>আপ্লোডের সময়</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var doc in Model)
+        {
+            <tr>
+                <td>@(count++)</td>
+                <td>@doc.OriginalName</td>
+                @{
+                    double fileSize = 0.00;
+                    string fileUnit = "bytes";
+                    if (doc.FileSize > 1024 * 1024)
+                    {
+                        fileUnit = "MB";
+                        fileSize = doc.FileSize / (1024.00 * 1024.00);
+                    }
+                    else if (doc.FileSize > 1024)
+                    {
+                        fileUnit = "KB";
+                        fileSize = doc.FileSize / (1024.00);
+                    }
+                    else
+                    {
+                        fileUnit = "bytes";
+                        fileSize = doc.FileSize;
+                    }
+                }
+                <td>@fileSize.ToString("0.00") @fileUnit</td>
+                <td>
+
+                    @{
+                        if (!string.IsNullOrWhiteSpace(doc.FileExtension))
+                        {
+
+                            if (doc.FileExtension.Contains("pdf"))
+                            {
+                                <img src="~/icons8/icons8-pdf-50.png" height="30" />
+                            }
+                            else if (doc.FileExtension.Contains("doc"))
+                            {
+
+                                <img src="~/icons8/icons8-word-file-50.png" height="30" />
+                            }
+                            else if (doc.FileExtension.Contains("xls"))
+                            {
+                                <img src="~/icons8/icons8-xls-50.png" height="30" />
+                            }
+                            else if (doc.FileExtension.Contains("ppt"))
+                            {
+                                <img src="~/icons8/icons8-powerpoint-file-50.png" height="30" />
+                            }
+                            else if (doc.FileExtension.Contains("txt"))
+                            {
+                                <img src="~/icons8/icons8-txt-50.png" height="30" />
+                            }
+                            else if (doc.FileExtension.Contains("jpg") || doc.FileExtension.Contains("jpeg") || doc.FileExtension.Contains("png"))
+                            {
+                                <img src="~/icons8/icons8-image-file-50.png" height="30" />
+                            }
+                            else
+                            {
+                                <img src="~/icons8/icons8-file-50.png" height="30" />
+                            }
+                        }
+                        else
+                        {
+                            <img src="~/icons8/icons8-file-50.png" height="30" />
+                        }
+                    }
+                </td>
+                <td>@doc.UploadedAt.ToLocalTime()</td>
+                <td>
+                    <a asp-action="Download" asp-route-id="@doc.DocumentId"><i class="bi bi-download text-primary"></i></a> &nbsp;
+                    <form asp-action="Delete" asp-route-id="@doc.DocumentId" method="post" style="display:inline;">
+                        <button type="submit" class="border-0" onclick="return confirm('Delete this document?');"><i class="bi bi-trash text-danger"></i></button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

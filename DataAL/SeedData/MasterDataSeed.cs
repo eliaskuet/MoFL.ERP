@@ -416,16 +416,17 @@ namespace DataAL.SeedData
             get
             {
                 List<Designation> items = new List<Designation>();
-                items.Add(new Designation { DesignationId = 1, Name = "সচিব", IsPublished = true, Order = 1 });
-                items.Add(new Designation { DesignationId = 2, Name = "অতিরিক্ত সচিব", IsPublished = true, Order = 2 });
-                items.Add(new Designation { DesignationId = 3, Name = "যুগ্ম সচিব", IsPublished = true, Order = 3 });
-                items.Add(new Designation { DesignationId = 4, Name = "উপসচিব", IsPublished = true, Order = 4 });
-                items.Add(new Designation { DesignationId = 5, Name = "সিস্টেম এনালিস্ট", IsPublished = true, Order = 5 });
-                items.Add(new Designation { DesignationId = 6, Name = "সিনিয়র সহকারি সচিব", IsPublished = true, Order = 6 });
-                items.Add(new Designation { DesignationId = 7, Name = "প্রোগ্রামার", IsPublished = true, Order = 7 });
-                items.Add(new Designation { DesignationId = 8, Name = "সহকারি সচিব", IsPublished = true, Order = 8 });
-                items.Add(new Designation { DesignationId = 9, Name = "সহকারি প্রোগ্রামার", IsPublished = true, Order = 9 });
-                items.Add(new Designation { DesignationId = 10, Name = "হিসাব রক্ষণ কর্মকর্তা", IsPublished = true, Order = 10 });
+                items.Add(new Designation { DesignationId = 1, Name = "উপদেষ্টা", IsPublished = true, Order = 1 });
+                items.Add(new Designation { DesignationId = 2, Name = "সচিব", IsPublished = true, Order = 2 });
+                items.Add(new Designation { DesignationId = 3, Name = "অতিরিক্ত সচিব", IsPublished = true, Order = 3 });
+                items.Add(new Designation { DesignationId = 4, Name = "যুগ্ম সচিব", IsPublished = true, Order = 4 });
+                items.Add(new Designation { DesignationId = 5, Name = "উপসচিব", IsPublished = true, Order = 5 });
+                items.Add(new Designation { DesignationId = 6, Name = "সিস্টেম এনালিস্ট", IsPublished = true, Order = 6 });
+                items.Add(new Designation { DesignationId = 7, Name = "সিনিয়র সহকারি সচিব", IsPublished = true, Order = 7 });
+                items.Add(new Designation { DesignationId = 8, Name = "প্রোগ্রামার", IsPublished = true, Order = 8 });
+                items.Add(new Designation { DesignationId = 9, Name = "সহকারি সচিব", IsPublished = true, Order = 9 });
+                items.Add(new Designation { DesignationId = 10, Name = "সহকারি প্রোগ্রামার", IsPublished = true, Order = 10});
+                items.Add(new Designation { DesignationId = 11, Name = "হিসাব রক্ষণ কর্মকর্তা", IsPublished = true, Order = 11 });
                 return items;
             }
         }

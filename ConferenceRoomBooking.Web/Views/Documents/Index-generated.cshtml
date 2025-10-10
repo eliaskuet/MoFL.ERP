@@ -1,0 +1,95 @@
+﻿@model IEnumerable<DataAL.Models.Document>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-outline-primary">Upload</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FileName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OriginalName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UploadedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DocumentType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Office)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsPublished)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedByUserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedById)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModificationDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FileName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OriginalName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UploadedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DocumentType.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Office.OfficeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsPublished)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedByUserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedById)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModificationDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.DocumentId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.DocumentId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.DocumentId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

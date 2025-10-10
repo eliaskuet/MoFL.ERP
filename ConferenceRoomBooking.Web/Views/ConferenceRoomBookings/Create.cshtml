@@ -17,8 +17,8 @@
                 <a asp-action="index" class="btn btn-outline-primary btn-icon-text btn-rounded btn-resize">
                     <i class="ti-arrow-left"></i>Back to list
                 </a>
-                <a asp-action="index" asp-controller="home" class="btn btn-outline-primary btn-icon-text btn-rounded btn-resize">
-                    <i class="ti-desktop"></i>&nbsp;Dashboard
+                <a asp-action="index" asp-controller="ConferenceRoomBookings" class="btn btn-outline-primary btn-icon-text btn-rounded btn-resize">
+                    <i class="bi bi-house"></i>&nbsp;Dashboard
                 </a>
             </div>
         </div>
@@ -32,18 +32,20 @@
                 @* <h4 class="card-title">Add a Personal Information</h4> *@
                 <div class="table-responsive pt-3">
                     @* <div asp-validation-summary="All" class="text-danger"></div> *@
-                    <form asp-action="Create">
+                    <form asp-action="Create" method="post" enctype="multipart/form-data">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                        <div class="form-group">
-                            <label asp-for="DateOfEvent" class="control-label"></label>
-                            <input asp-for="DateOfEvent" class="form-control" />
-                            <span asp-validation-for="DateOfEvent" class="text-danger"></span>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="DateOfEvent" class="control-label"></label>
+                                <input asp-for="DateOfEvent" class="form-control" />
+                                <span asp-validation-for="DateOfEvent" class="text-danger"></span>
+                            </div>
                         </div>
-                        @* <div class="form-group">
-                <label asp-for="StartTime" class="control-label"></label>
-                <input asp-for="StartTime" class="form-control" />
-                <span asp-validation-for="StartTime" class="text-danger"></span>
-            </div> *@
+                        @*<div class="form-group">
+                            <label asp-for="StartTime" class="control-label"></label>
+                            <input asp-for="StartTime" class="form-control" />
+                            <span asp-validation-for="StartTime" class="text-danger"></span>
+                        </div>*@
                         <div class="form-group">
                             <label asp-for="Subject" class="control-label"></label>
                             <input asp-for="Subject" class="form-control" />
@@ -54,51 +56,133 @@
                             <input asp-for="Description" class="form-control" />
                             <span asp-validation-for="Description" class="text-danger"></span>
                         </div>
-                        <div class="form-group">
-                            <label asp-for="ChairpersonId" class="control-label"></label>
-                            <select asp-for="ChairpersonId" class="form-control" asp-items="ViewBag.ChairpersonId"></select>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="ChairpersonId" class="control-label"></label>
+                                    <select asp-for="ChairpersonId" class="form-control" asp-items="ViewBag.ChairpersonId"></select>
+                                </div>
+                            </div>
+                            @* <div class="col-md-6">
+                                <br />
+                                <button type="button" class="btn btn-outline-info btn-sm "><i class="bi bi-plus"></i> Add</button>
+                            </div> *@
                         </div>
-                        <div class="form-group">
-                            <label asp-for="TentativeEndTime" class="control-label"></label>
-                            <input asp-for="TentativeEndTime" class="form-control" />
-                            <span asp-validation-for="TentativeEndTime" class="text-danger"></span>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="TentativeEndTime" class="control-label"></label>
+                                <input asp-for="TentativeEndTime" class="form-control" />
+                                <span asp-validation-for="TentativeEndTime" class="text-danger"></span>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label asp-for="EventTypeId" class="control-label"></label>
-                            <select asp-for="EventTypeId" class="form-control" asp-items="ViewBag.EventTypeId"></select>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="EventTypeId" class="control-label"></label>
+                                <select asp-for="EventTypeId" class="form-control" asp-items="ViewBag.EventTypeId"></select>
+                            </div>
                         </div>
                         @* <div class="form-group">
-                <label asp-for="OfficeId" class="control-label"></label>
-                <select asp-for="OfficeId" class ="form-control" asp-items="ViewBag.OfficeId"></select>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="IsPublished" /> @Html.DisplayNameFor(model => model.IsPublished)
-                </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="CreatedByUserId" class="control-label"></label>
-                <input asp-for="CreatedByUserId" class="form-control" />
-                <span asp-validation-for="CreatedByUserId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CreatedDate" class="control-label"></label>
-                <input asp-for="CreatedDate" class="form-control" />
-                <span asp-validation-for="CreatedDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ModifiedById" class="control-label"></label>
-                <input asp-for="ModifiedById" class="form-control" />
-                <span asp-validation-for="ModifiedById" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ModificationDate" class="control-label"></label>
-                <input asp-for="ModificationDate" class="form-control" />
-                <span asp-validation-for="ModificationDate" class="text-danger"></span>
-            </div> *@
+                                <label asp-for="OfficeId" class="control-label"></label>
+                                <select asp-for="OfficeId" class ="form-control" asp-items="ViewBag.OfficeId"></select>
+                            </div>
+                            <div class="form-group form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" asp-for="IsPublished" /> @Html.DisplayNameFor(model => model.IsPublished)
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="CreatedByUserId" class="control-label"></label>
+                                <input asp-for="CreatedByUserId" class="form-control" />
+                                <span asp-validation-for="CreatedByUserId" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="CreatedDate" class="control-label"></label>
+                                <input asp-for="CreatedDate" class="form-control" />
+                                <span asp-validation-for="CreatedDate" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="ModifiedById" class="control-label"></label>
+                                <input asp-for="ModifiedById" class="form-control" />
+                                <span asp-validation-for="ModifiedById" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="ModificationDate" class="control-label"></label>
+                                <input asp-for="ModificationDate" class="form-control" />
+                                <span asp-validation-for="ModificationDate" class="text-danger"></span>
+                            </div> *@
+                        <br />
+                        <div class="accordion" id="accordionZoomMeeting">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                        <strong> Zoom অনলাইন সভার তথ্য (ঐচ্ছিক)</strong>
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionZoomMeeting">
+                                    <div class="accordion-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label asp-for="ZoomMeetingId" class="control-label"></label>
+                                                    <input asp-for="ZoomMeetingId" class="form-control" />
+                                                    <span asp-validation-for="ZoomMeetingId" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label asp-for="ZoomMeetingPasscode" class="control-label"></label>
+                                                    <input asp-for="ZoomMeetingPasscode" class="form-control" />
+                                                    <span asp-validation-for="ZoomMeetingPasscode" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="ZoomMeetingLink" class="control-label"></label>
+                                            <input asp-for="ZoomMeetingLink" class="form-control" />
+                                            <span asp-validation-for="ZoomMeetingLink" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <strong> আরও অপশন (ঐচ্ছিক)</strong>
+                                    </button>
+                                </h2>
+                                <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label asp-for="ContactPersonaName" class="control-label"></label>
+                                                    <input asp-for="ContactPersonaName" class="form-control" />
+                                                    <span asp-validation-for="ContactPersonaName" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label asp-for="ContactPersonMobile" class="control-label"></label>
+                                                    <input asp-for="ContactPersonMobile" class="form-control" />
+                                                    <span asp-validation-for="ContactPersonMobile" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label asp-for="OfficeOrderUrl" class="control-label"></label>
+                                            <input asp-for="OfficeOrderUrl" class="form-control" type="file" id="file" name="file" />
+                                            <span asp-validation-for="OfficeOrderUrl" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-group">
                             <br />
-                            <input type="submit" value="Create" class="btn btn-primary" />
+                            <input type="submit" value="Save" class="btn btn-primary" />
                         </div>
                     </form>
                     @* <div class="row">

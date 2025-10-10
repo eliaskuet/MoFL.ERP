@@ -3,25 +3,86 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome to MoFL-ERP Dashboard</h1>
+    <h1 class="display-6">Welcome to MoFL-ERP Dashboard</h1>
     @* <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p> *@
 </div>
 <br />
-<div class="row">
-    <div class="col-lg-6 grid-margin stretch-card">
+@* <div class="row">
+    <div class="col-lg-4 grid-margin stretch-card">
         <div class="card">
-            <div class="card-title">
-                <h3>Conference Room Booking System</h3>
+            <div class="card-title text-center">
+                <br />
+                <h3>সম্মেলন কক্ষ বুকিং সিস্টেম</h3>
             </div>
             <div class="card-body">
                 <div class=" d-grid gap-2">
                     <a asp-controller="ConferenceRoomBookings" asp-action="create" class="btn btn-outline-primary">সম্মেলন কক্ষ বুকিং দিন</a>
-                    <a asp-controller="ConferenceRoomBookings" asp-action="index" asp-route-flag="100" class="btn btn-outline-info">আজকের অনুষ্ঠানের সময়সূচী</a>
+                    <a asp-controller="ConferenceRoomBookings" asp-action="index" asp-route-flag="100" class="btn btn-outline-info">আজকের অনুষ্ঠানের সময়সূচী (তালিকা) </a>
+                    <a asp-controller="ConferenceRoomBookings" asp-action="today" class="btn btn-outline-info">আজকের অনুষ্ঠানের সময়সূচী</a>
+                    <a asp-controller="ConferenceRoomBookings" asp-action="upcoming" class="btn btn-outline-danger">আপকামিং অনুষ্ঠানের সময়সূচী</a>
                     <a asp-controller="ConferenceRoomBookings" asp-action="index" asp-route-flag="1" class="btn btn-outline-success">সম্মেলন কক্ষে অনুষ্ঠানের সময়সূচী</a>
                     <a asp-controller="ConferenceRoomBookings" asp-action="index" asp-route-flag="7" class="btn btn-outline-warning">আগামী এক সপ্তাহের অনুষ্ঠানের সময়সূচী</a>
                     <a asp-controller="ConferenceRoomBookings" asp-action="index" asp-route-flag="14" class="btn btn-outline-warning">আগামী দুই সপ্তাহের অনুষ্ঠানের সময়সূচী</a>
                     <a asp-controller="ConferenceRoomBookings" asp-action="index" asp-route-flag="-1" class="btn btn-outline-secondary">পূর্বের অনুষ্ঠানের সময়সূচী</a>
+                    <a asp-controller="ConferenceRoomBookings" asp-action="index" asp-route-flag="-1" class="btn btn-outline-info">অনুষ্ঠানের আহ্বায়ক / সভাপতি </a>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-title text-center">
+                <br />
+                <h3>সম্মেলন কক্ষ: অনুষ্ঠানের সময়সূচী</h3>
+            </div>
+            <div class="card-body">
+                <div class=" d-grid gap-2">
+                    <a asp-controller="ConferenceRoomBookings" asp-action="upcoming" asp-route-flag="1" class="btn btn-outline-danger">উপদেষ্টা মহোদয়ের আপকামিং অনুষ্ঠানের সময়সূচী</a>
+                    <a asp-controller="ConferenceRoomBookings" asp-action="upcoming" asp-route-flag="2" class="btn btn-outline-primary">সচিব মহোদয়ের আপকামিং অনুষ্ঠানের সময়সূচী</a>
+                    <a asp-controller="ConferenceRoomBookings" asp-action="upcoming" asp-route-flag="-1" class="btn btn-outline-primary">অন্যান্য কর্মকর্তাগণের আপকামিং অনুষ্ঠানের সময়সূচী</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br /> *@
+<div class="row g-4 mb-4">
+
+    <!-- /.col-->
+    <div class="col-sm-6 col-lg-4">
+        <div class="card" style="--cui-card-cap-bg: #4875b4">
+            <div class="card-header d-flex justify-content-center align-items-center">
+                <div class="chart-wrapper top-0 start-0 w-100 h-100">
+                    <a asp-controller="ConferenceRoomBookings" asp-action="index">
+                        <img src="~/images/conference-room-booking.png" width="100%" height="150" />
+                    </a>
+                </div>
+            </div>
+            <div class="row text-center">
+                <h3>
+                    <a asp-controller="Home" asp-action="bookingsystem" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
+                        সম্মেলন কক্ষ বুকিং সিস্টেম
+                    </a>
+                </h3>
+            </div>
+        </div>
+    </div>
+    <!-- /.col-->
+
+    <div class="col-sm-6 col-lg-4">
+        <div class="card" style="--cui-card-cap-bg: #00aced">
+            <div class="card-header d-flex justify-content-center align-items-center">
+                <div class="chart-wrapper top-0 start-0 w-100 h-100">
+                    <img src="~/images/document-management-system.jpg" width="100%" height="150" />
+                </div>
+            </div>
+            <div class="row text-center">
+                <h3>
+                    <a asp-controller="home" asp-action="documentms" class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover">
+                        ডকুমেন্ট ম্যানেজমেন্ট সিস্টেম
+                        </a>
+                </h3>
             </div>
         </div>
     </div>

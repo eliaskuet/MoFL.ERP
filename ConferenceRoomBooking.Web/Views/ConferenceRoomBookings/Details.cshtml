@@ -7,85 +7,146 @@
 <h1>Details</h1>
 
 <div>
-    <h4>ConferenceRoomBooking</h4>
+    <h4>Conference Room Booking</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.DateOfEvent)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DateOfEvent)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.StartTime)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.StartTime)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Subject)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Subject)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Description)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Description)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ChairPersonName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ChairPersonName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ChairPersonDesignation)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ChairPersonDesignation)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.TentativeEndTime)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.TentativeEndTime)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ContactPersonaName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ContactPersonaName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ContactPersonMobile)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ContactPersonMobile)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OfficeOrderUrl)
+        </dt>
+        <dd class="col-sm-10">
+            @if (!string.IsNullOrEmpty(Model.OfficeOrderUrl))
+            {
+                <a asp-action="Download" asp-route-id="@Model.ConferenceRoomBookingId">
+                    @if (!string.IsNullOrEmpty(Model.OriginalName))
+                    {
+                        @Html.DisplayFor(model => model.OriginalName)
+                        <i class="bi bi-download text-primary"></i>
+                    }
+                </a>
+            }
+            else
+            {
+                <span>ফাইল সংযুক্ত নেই</span>
+            }
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ZoomMeetingId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ZoomMeetingId)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ZoomMeetingPasscode)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ZoomMeetingPasscode)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ZoomMeetingLink)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ZoomMeetingLink)
+        </dd>
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Chairperson)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Chairperson.ChairpersonName)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Office)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Office.OfficeId)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.EventType)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.EventType.EventTypeId)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.IsPublished)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.IsPublished)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.CreatedByUserId)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.CreatedByUserId)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.CreatedDate)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.CreatedDate)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ModifiedById)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.ModifiedById)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ModificationDate)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.ModificationDate)
         </dd>
     </dl>

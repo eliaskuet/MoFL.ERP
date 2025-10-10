@@ -1,7 +1,6 @@
 ﻿using BusinessAL.DbContext;
 using BusinessAL.Repositories.BaseRepositories;
 using DataAL.Models;
-using DataAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -1,0 +1,91 @@
+﻿@using DataAL.Models;
+@model IEnumerable<ConferenceRoomBooking>
+
+@{
+    ViewData["Title"] = "আজকের অনুষ্ঠানের সময়সূচীসমূহ";
+    List<ConferenceRoomBooking> meetings = Model.ToList();
+}
+
+<h3>আজকের অনুষ্ঠানের সময়সূচীসমূহ</h3>
+<hr />
+
+<div class="row">
+    <div class="col-md-12 grid-margin">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <a asp-action="create" class="btn btn-outline-primary btn-icon-text btn-rounded btn-resize">
+                    <i class="ti-desktop"></i>&nbsp;কনফারেন্স রুম বুকিং দিন
+                </a>
+            </div>
+            <div>
+                <a asp-controller="ConferenceRoomBookings" asp-action="index" asp-route-flag="100" class="btn btn-outline-info">আজকের অনুষ্ঠানের সময়সূচী (তালিকা) </a>
+                <a asp-action="index" class="btn btn-outline-primary btn-icon-text btn-rounded btn-resize">
+                    <i class="ti-arrow-left"></i>Back to list
+                </a>
+                <a asp-action="index" asp-controller="ConferenceRoomBookings" class="btn btn-outline-primary btn-icon-text btn-rounded btn-resize">
+                    <i class="bi bi-house"></i>&nbsp;Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="row">
+    @* <h4 class="card-title">Add a Personal Information</h4> *@
+    <div id="carouselExampleDark" class="carousel carousel-dark slide border">
+        <div class="carousel-indicators">
+            @{
+                string isActive = "active";
+                string isCurrent = "true";
+                for (int i = 1; i <= meetings.Count; i++)
+                {
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="@(i - 1)" class="@isActive" aria-current="@isCurrent" aria-label="@meetings[i-1].Subject"></button>
+                    isActive = string.Empty;
+                    isCurrent = string.Empty;
+                }
+            }
+        </div>
+
+        <div class="carousel-inner">
+            @{
+                isActive = "active";
+                for (int i = 0; i < meetings.Count; i++)
+                {
+                    <div class="carousel-item @isActive" data-bs-interval="1000" style="height: 200px !important;">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>
+                                @meetings[i].Subject
+                                <br /><br />
+                                @meetings[i].DateOfEvent
+                            </h5>
+                            <p>@meetings[i].ContactPersonaName
+                            <br />
+                            @meetings[i].ContactPersonMobile</p>
+                        </div>
+                    </div>
+                    isActive = string.Empty;
+                }
+            }
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+<br />
+<div>
+    <a asp-action="index" class="btn btn-outline-primary btn-icon-text btn-rounded btn-resize">
+        <i class="ti-arrow-left"></i>Back to list
+    </a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

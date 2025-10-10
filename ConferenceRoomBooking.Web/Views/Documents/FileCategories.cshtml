@@ -1,0 +1,41 @@
+﻿@model IEnumerable<DataAL.Models.DocumentCategory>
+
+@{
+    ViewData["Title"] = "File Categories";
+    int count = 1;
+}
+
+<h1>ডকুমেন্টের ধরণ</h1>
+
+<table class="table table-hover table-striped">
+    <thead>
+        <tr>
+            <td>#</td>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            @* <th></th> *@
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@(count++)</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            @* <td>
+                    <a asp-action="Edit" asp-route-id="@item.DocumentCategoryId"><i class="bi bi-pencil text-warning"></i></a> &nbsp;
+                    <a asp-action="Details" asp-route-id="@item.DocumentCategoryId"><i class="bi bi-book text-primary"></i></a> &nbsp;
+                    <a asp-action="Delete" asp-route-id="@item.DocumentCategoryId"><i class="bi bi-trash text-danger"></i></a>
+            </td> *@
+        </tr>
+}
+    </tbody>
+</table>

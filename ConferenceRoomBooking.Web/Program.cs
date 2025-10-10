@@ -1,9 +1,11 @@
 // Ensure the following NuGet package is installed in your project:  
 // Microsoft.EntityFrameworkCore.SqlServer  
+// Microsoft.AspNetCore.Identity.EntityFrameworkCore  
 
 using BusinessAL.DbContext;
 using BusinessAL.Repositories.BaseRepositories;
 using DataAL.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -19,10 +21,27 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<RepositoryContext>(options =>
 {
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
+        sqlServerOptionsAction: sqlOptions =>
+        {
+            sqlOptions.EnableRetryOnFailure(
+                maxRetryCount: 5, // Number of retries
+                maxRetryDelay: TimeSpan.FromSeconds(30), // Max delay between retries
+                errorNumbersToAdd: null); // SQL error numbers to consider transient (null for default)
+        });
     options.EnableSensitiveDataLogging();
 });
+
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<RepositoryContext>();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+// In Program.cs for .NET 6+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+})
+.AddCookie();
 var app = builder.Build();
 // Configure the HTTP request pipeline.  
 if (!app.Environment.IsDevelopment())
@@ -32,8 +51,12 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+
+
 app.UseHttpsRedirection();
 app.UseRouting();
+// Ensure UseAuthentication and UseAuthorization are called in the middleware pipeline
+app.UseAuthentication();
 app.UseAuthorization();
 app.MapStaticAssets();
 app.MapControllerRoute(
