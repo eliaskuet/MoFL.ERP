@@ -2475,6 +2475,74 @@ namespace BusinessAL.Migrations
                     b.HasKey("DocumentCategoryId");
 
                     b.ToTable("DocumentCategory");
+
+                    b.HasData(
+                        new
+                        {
+                            DocumentCategoryId = 1,
+                            CategoryName = "চিঠি",
+                            CreatedByUserId = 0,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "সরকারি বা ব্যক্তিগত চিঠিপত্র",
+                            IsPublished = false,
+                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModifiedById = 0
+                        },
+                        new
+                        {
+                            DocumentCategoryId = 2,
+                            CategoryName = "রিপোর্ট",
+                            CreatedByUserId = 0,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "বিভিন্ন ধরনের রিপোর্ট",
+                            IsPublished = false,
+                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModifiedById = 0
+                        },
+                        new
+                        {
+                            DocumentCategoryId = 3,
+                            CategoryName = "ফর্ম",
+                            CreatedByUserId = 0,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "আবেদন ফর্ম বা অন্যান্য ফর্ম",
+                            IsPublished = false,
+                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModifiedById = 0
+                        },
+                        new
+                        {
+                            DocumentCategoryId = 4,
+                            CategoryName = "প্রেজেন্টেশন",
+                            CreatedByUserId = 0,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "PowerPoint বা অন্যান্য প্রেজেন্টেশন ফাইল",
+                            IsPublished = false,
+                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModifiedById = 0
+                        },
+                        new
+                        {
+                            DocumentCategoryId = 5,
+                            CategoryName = "মেমো",
+                            CreatedByUserId = 0,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "মেমো বা নোটিশ",
+                            IsPublished = false,
+                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModifiedById = 0
+                        },
+                        new
+                        {
+                            DocumentCategoryId = 6,
+                            CategoryName = "অন্যান্য",
+                            CreatedByUserId = 0,
+                            CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "অন্যান্য ধরনের ডকুমেন্ট",
+                            IsPublished = false,
+                            ModificationDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            ModifiedById = 0
+                        });
                 });
 
             modelBuilder.Entity("DataAL.Models.EventType", b =>
@@ -2524,6 +2592,56 @@ namespace BusinessAL.Migrations
                     b.HasKey("FileTypeId");
 
                     b.ToTable("FileType");
+
+                    b.HasData(
+                        new
+                        {
+                            FileTypeId = 1,
+                            Description = "Portable Document Format",
+                            FileExtension = ".pdf",
+                            IsPublished = false,
+                            TypeName = "PDF"
+                        },
+                        new
+                        {
+                            FileTypeId = 2,
+                            Description = "Microsoft Word Document",
+                            FileExtension = ".docx",
+                            IsPublished = false,
+                            TypeName = "Word Document"
+                        },
+                        new
+                        {
+                            FileTypeId = 3,
+                            Description = "Microsoft Excel Spreadsheet",
+                            FileExtension = ".xlsx",
+                            IsPublished = false,
+                            TypeName = "Excel Spreadsheet"
+                        },
+                        new
+                        {
+                            FileTypeId = 4,
+                            Description = "Microsoft PowerPoint Presentation",
+                            FileExtension = ".pptx",
+                            IsPublished = false,
+                            TypeName = "PowerPoint Presentation"
+                        },
+                        new
+                        {
+                            FileTypeId = 5,
+                            Description = "Plain Text File",
+                            FileExtension = ".txt",
+                            IsPublished = false,
+                            TypeName = "Text File"
+                        },
+                        new
+                        {
+                            FileTypeId = 6,
+                            Description = "Image Files (JPEG, PNG, GIF)",
+                            FileExtension = ".jpg/.png/.gif",
+                            IsPublished = false,
+                            TypeName = "Image File"
+                        });
                 });
 
             modelBuilder.Entity("DataAL.Models.Gender", b =>

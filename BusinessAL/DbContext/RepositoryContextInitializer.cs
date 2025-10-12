@@ -124,6 +124,9 @@ namespace BusinessAL.DbContext
             //builder.Entity<DivisionOrClass>().HasData(SeedData.DivisionOrClasss);
             //builder.Entity<Language>().HasData(SeedData.Languages);
             builder.Entity<Degree>().HasData(SeedData.Degrees);
+            builder.Entity<FileType>().HasData(SeedData.FileTypes);
+            builder.Entity<DocumentCategory>().HasData(SeedData.DocumentCategories);
+            //builder.Entity<ApplicationUser>().HasData(SeedData.Users);
         }
 
         //public static async void SeedUserAndRoleAsync(IApplicationBuilder applicationBuilder)

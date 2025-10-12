@@ -383,9 +383,9 @@ namespace DataAL.SeedData
         //    get
         //    {
         //        List<Role> items = new List<Role>();
-        //        items.Add(new Role { RoleId = 1, RoleName = "Admin", IsPublished = true, CreatedByUserId = 1, CreatedDate = DateTime.Now, ModifiedById = 1, ModificationDate = DateTime.Now });
-        //        items.Add(new Role { RoleId = 2, RoleName = "User", IsPublished = true, CreatedByUserId = 1, CreatedDate = DateTime.Now, ModifiedById = 1, ModificationDate = DateTime.Now });
-        //        //items.Add(new Role { RoleId = 4, RoleName = "Authority", IsPublished = true, CreatedByUserId = 1, CreatedDate = DateTime.Now, ModifiedById = 1, ModificationDate = DateTime.Now });
+        //        items.Add(new Role { RoleId = 1, RoleName = "Admin", IsPublished = true, CreatedByUserId = 1, CreatedDate = new DateTime(2025, 10, 10, 10, 10, 10, DateTimeKind.Unspecified), ModifiedById = 1, ModificationDate = new DateTime(2025, 10, 10, 10, 10, 10, DateTimeKind.Unspecified) });
+        //        items.Add(new Role { RoleId = 2, RoleName = "User", IsPublished = true, CreatedByUserId = 1, CreatedDate = new DateTime(2025, 10, 10, 10, 10, 10, DateTimeKind.Unspecified), ModifiedById = 1, ModificationDate = new DateTime(2025, 10, 10, 10, 10, 10, DateTimeKind.Unspecified) });
+        //        //items.Add(new Role { RoleId = 4, RoleName = "Authority", IsPublished = true, CreatedByUserId = 1, CreatedDate = new DateTime(2025, 10, 10, 10, 10, 10, DateTimeKind.Unspecified), ModifiedById = 1, ModificationDate = new DateTime(2025, 10, 10, 10, 10, 10, DateTimeKind.Unspecified) });
         //        return items;
         //    }
         //}
@@ -395,7 +395,7 @@ namespace DataAL.SeedData
         //    get
         //    {
         //        List<Office> items = new List<Office>();
-        //        items.Add(new Office { OfficeId = 1, Name = "মৎস্য ও প্রাণিসম্পদ মন্ত্রণালয়", Moto = "গণপ্রজাতন্ত্রী বাংলাদেশ সরকার", LogoUrl = "~/images/logo.png", IsPublished = true, LiveUrl = "http://www.mofl.gov.bd", IsCurrentOffice = true, CreatedByUserId = 1, ModifiedById = 1, CreatedDate = DateTime.Now, ModificationDate = DateTime.Now, Address = string.Empty });
+        //        items.Add(new Office { OfficeId = 1, Name = "মৎস্য ও প্রাণিসম্পদ মন্ত্রণালয়", Moto = "গণপ্রজাতন্ত্রী বাংলাদেশ সরকার", LogoUrl = "~/images/logo.png", IsPublished = true, LiveUrl = "http://www.mofl.gov.bd", IsCurrentOffice = true, CreatedByUserId = 1, ModifiedById = 1, CreatedDate = new DateTime(2025, 10, 10, 10, 10, 10, DateTimeKind.Unspecified), ModificationDate = new DateTime(2025, 10, 10, 10, 10, 10, DateTimeKind.Unspecified), Address = string.Empty });
         //        return items;
         //    }
         //}
@@ -405,8 +405,9 @@ namespace DataAL.SeedData
             get
             {
                 List<ApplicationUser> items = new List<ApplicationUser>();
-                items.Add(new ApplicationUser { Name = "Elias Hossain", IsPublished = true, CreatedByUserId = 1, ModifiedById = 1, CreatedDate = DateTime.Now, ModificationDate = DateTime.Now, LastLoginDate = DateTime.Now });
-                //items.Add(new User { UserId = 2, Name = "Pds Admin", EmailAddress = "pds@mofl.gov.bd", Password = "12345678", IsActive = true, CreatedByUserId = 1, ModifiedById = 1, CreatedDate = DateTime.Now, ModificationDate = DateTime.Now, LastLoginDate = DateTime.Now });
+                items.Add(new ApplicationUser { ApplicationUserId = 1, Email="sa@mofl.gov.bd", Name = "Elias Hossain", IsPublished = true, CreatedByUserId = 1, ModifiedById = 1, CreatedDate = new DateTime(2025, 10, 10, 10, 10, 10, DateTimeKind.Unspecified), ModificationDate = new DateTime(2025, 10, 10, 10, 10, 10, DateTimeKind.Unspecified), LastLoginDate = new DateTime(2025, 10, 10, 10, 10, 10, DateTimeKind.Unspecified) });
+
+                //items.Add(new User { UserId = 2, Name = "Pds Admin", EmailAddress = "pds@mofl.gov.bd", Password = "12345678", IsActive = true, CreatedByUserId = 1, ModifiedById = 1, CreatedDate = new DateTime(2025, 10, 10, 10, 10, 10, DateTimeKind.Unspecified), ModificationDate = new DateTime(2025, 10, 10, 10, 10, 10, DateTimeKind.Unspecified), LastLoginDate = new DateTime(2025, 10, 10, 10, 10, 10, DateTimeKind.Unspecified) });
                 return items;
             }
         }

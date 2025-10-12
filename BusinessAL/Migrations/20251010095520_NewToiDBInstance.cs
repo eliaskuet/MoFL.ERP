@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace BusinessAL.Migrations
 {
     /// <inheritdoc />
-    public partial class BismillahHirRahmanirRahim : Migration
+    public partial class NewToiDBInstance : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -63,24 +63,6 @@ namespace BusinessAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Chairperson",
-                columns: table => new
-                {
-                    ChairpersonId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ChairpersonName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IsPublished = table.Column<bool>(type: "bit", nullable: false),
-                    CreatedByUserId = table.Column<int>(type: "int", nullable: false),
-                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ModifiedById = table.Column<int>(type: "int", nullable: false),
-                    ModificationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Chairperson", x => x.ChairpersonId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Country",
                 columns: table => new
                 {
@@ -127,6 +109,25 @@ namespace BusinessAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "DocumentCategory",
+                columns: table => new
+                {
+                    DocumentCategoryId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CategoryName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsPublished = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedByUserId = table.Column<int>(type: "int", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedById = table.Column<int>(type: "int", nullable: false),
+                    ModificationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DocumentCategory", x => x.DocumentCategoryId);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "EventType",
                 columns: table => new
                 {
@@ -139,6 +140,22 @@ namespace BusinessAL.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_EventType", x => x.EventTypeId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "FileType",
+                columns: table => new
+                {
+                    FileTypeId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TypeName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FileExtension = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IsPublished = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FileType", x => x.FileTypeId);
                 });
 
             migrationBuilder.CreateTable(
@@ -245,8 +262,8 @@ namespace BusinessAL.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    ProviderKey = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
                     ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
@@ -290,8 +307,8 @@ namespace BusinessAL.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
                     Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -329,6 +346,94 @@ namespace BusinessAL.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Chairperson",
+                columns: table => new
+                {
+                    ChairpersonId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ChairpersonName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DesignationId = table.Column<int>(type: "int", nullable: false),
+                    ShortDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OfficialEmail = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Mobile = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    GoogleEmail = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Sequence = table.Column<int>(type: "int", nullable: false),
+                    IsPublished = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedByUserId = table.Column<int>(type: "int", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedById = table.Column<int>(type: "int", nullable: false),
+                    ModificationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Chairperson", x => x.ChairpersonId);
+                    table.ForeignKey(
+                        name: "FK_Chairperson_Designation_DesignationId",
+                        column: x => x.DesignationId,
+                        principalTable: "Designation",
+                        principalColumn: "DesignationId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Document",
+                columns: table => new
+                {
+                    DocumentId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FileName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OriginalName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FileSize = table.Column<long>(type: "bigint", nullable: false),
+                    FileExtension = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UploadedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DocumentTypeId = table.Column<int>(type: "int", nullable: true),
+                    OfficeId = table.Column<int>(type: "int", nullable: false),
+                    IsPublished = table.Column<bool>(type: "bit", nullable: false),
+                    CreatedByUserId = table.Column<int>(type: "int", nullable: false),
+                    CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedById = table.Column<int>(type: "int", nullable: false),
+                    ModificationDate = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Document", x => x.DocumentId);
+                    table.ForeignKey(
+                        name: "FK_Document_DocumentCategory_DocumentTypeId",
+                        column: x => x.DocumentTypeId,
+                        principalTable: "DocumentCategory",
+                        principalColumn: "DocumentCategoryId");
+                    table.ForeignKey(
+                        name: "FK_Document_Office_OfficeId",
+                        column: x => x.OfficeId,
+                        principalTable: "Office",
+                        principalColumn: "OfficeId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "City",
+                columns: table => new
+                {
+                    CityId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    CountryId = table.Column<int>(type: "int", nullable: false),
+                    StateId = table.Column<int>(type: "int", nullable: false),
+                    IsPublished = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_City", x => x.CityId);
+                    table.ForeignKey(
+                        name: "FK_City_State_StateId",
+                        column: x => x.StateId,
+                        principalTable: "State",
+                        principalColumn: "StateId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ConferenceRoomBooking",
                 columns: table => new
                 {
@@ -340,8 +445,17 @@ namespace BusinessAL.Migrations
                     EventTypeId = table.Column<int>(type: "int", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ChairpersonId = table.Column<int>(type: "int", nullable: false),
-                    TentativeEndTime = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ChairPersonName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ChairPersonDesignation = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    TentativeEndTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ContactPersonaName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ContactPersonMobile = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OfficeOrderUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    OriginalName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     OfficeId = table.Column<int>(type: "int", nullable: false),
+                    ZoomMeetingId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ZoomMeetingPasscode = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ZoomMeetingLink = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsPublished = table.Column<bool>(type: "bit", nullable: false),
                     CreatedByUserId = table.Column<int>(type: "int", nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -368,28 +482,6 @@ namespace BusinessAL.Migrations
                         column: x => x.OfficeId,
                         principalTable: "Office",
                         principalColumn: "OfficeId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "City",
-                columns: table => new
-                {
-                    CityId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
-                    CountryId = table.Column<int>(type: "int", nullable: false),
-                    StateId = table.Column<int>(type: "int", nullable: false),
-                    IsPublished = table.Column<bool>(type: "bit", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_City", x => x.CityId);
-                    table.ForeignKey(
-                        name: "FK_City_State_StateId",
-                        column: x => x.StateId,
-                        principalTable: "State",
-                        principalColumn: "StateId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -639,16 +731,43 @@ namespace BusinessAL.Migrations
                 columns: new[] { "DesignationId", "IsPublished", "Name", "Order" },
                 values: new object[,]
                 {
-                    { 1, true, "সচিব", 1 },
-                    { 2, true, "অতিরিক্ত সচিব", 2 },
-                    { 3, true, "যুগ্ম সচিব", 3 },
-                    { 4, true, "উপসচিব", 4 },
-                    { 5, true, "সিস্টেম এনালিস্ট", 5 },
-                    { 6, true, "সিনিয়র সহকারি সচিব", 6 },
-                    { 7, true, "প্রোগ্রামার", 7 },
-                    { 8, true, "সহকারি সচিব", 8 },
-                    { 9, true, "সহকারি প্রোগ্রামার", 9 },
-                    { 10, true, "হিসাব রক্ষণ কর্মকর্তা", 10 }
+                    { 1, true, "উপদেষ্টা", 1 },
+                    { 2, true, "সচিব", 2 },
+                    { 3, true, "অতিরিক্ত সচিব", 3 },
+                    { 4, true, "যুগ্ম সচিব", 4 },
+                    { 5, true, "উপসচিব", 5 },
+                    { 6, true, "সিস্টেম এনালিস্ট", 6 },
+                    { 7, true, "সিনিয়র সহকারি সচিব", 7 },
+                    { 8, true, "প্রোগ্রামার", 8 },
+                    { 9, true, "সহকারি সচিব", 9 },
+                    { 10, true, "সহকারি প্রোগ্রামার", 10 },
+                    { 11, true, "হিসাব রক্ষণ কর্মকর্তা", 11 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "DocumentCategory",
+                columns: new[] { "DocumentCategoryId", "CategoryName", "CreatedByUserId", "CreatedDate", "Description", "IsPublished", "ModificationDate", "ModifiedById" },
+                values: new object[,]
+                {
+                    { 1, "চিঠি", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "সরকারি বা ব্যক্তিগত চিঠিপত্র", false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0 },
+                    { 2, "রিপোর্ট", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "বিভিন্ন ধরনের রিপোর্ট", false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0 },
+                    { 3, "ফর্ম", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "আবেদন ফর্ম বা অন্যান্য ফর্ম", false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0 },
+                    { 4, "প্রেজেন্টেশন", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "PowerPoint বা অন্যান্য প্রেজেন্টেশন ফাইল", false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0 },
+                    { 5, "মেমো", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "মেমো বা নোটিশ", false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0 },
+                    { 6, "অন্যান্য", 0, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "অন্যান্য ধরনের ডকুমেন্ট", false, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 0 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "FileType",
+                columns: new[] { "FileTypeId", "Description", "FileExtension", "IsPublished", "TypeName" },
+                values: new object[,]
+                {
+                    { 1, "Portable Document Format", ".pdf", false, "PDF" },
+                    { 2, "Microsoft Word Document", ".docx", false, "Word Document" },
+                    { 3, "Microsoft Excel Spreadsheet", ".xlsx", false, "Excel Spreadsheet" },
+                    { 4, "Microsoft PowerPoint Presentation", ".pptx", false, "PowerPoint Presentation" },
+                    { 5, "Plain Text File", ".txt", false, "Text File" },
+                    { 6, "Image Files (JPEG, PNG, GIF)", ".jpg/.png/.gif", false, "Image File" }
                 });
 
             migrationBuilder.InsertData(
@@ -853,6 +972,11 @@ namespace BusinessAL.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Chairperson_DesignationId",
+                table: "Chairperson",
+                column: "DesignationId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_City_StateId",
                 table: "City",
                 column: "StateId");
@@ -870,6 +994,16 @@ namespace BusinessAL.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_ConferenceRoomBooking_OfficeId",
                 table: "ConferenceRoomBooking",
+                column: "OfficeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Document_DocumentTypeId",
+                table: "Document",
+                column: "DocumentTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Document_OfficeId",
+                table: "Document",
                 column: "OfficeId");
 
             migrationBuilder.CreateIndex(
@@ -913,7 +1047,10 @@ namespace BusinessAL.Migrations
                 name: "Degree");
 
             migrationBuilder.DropTable(
-                name: "Designation");
+                name: "Document");
+
+            migrationBuilder.DropTable(
+                name: "FileType");
 
             migrationBuilder.DropTable(
                 name: "Gender");
@@ -937,10 +1074,16 @@ namespace BusinessAL.Migrations
                 name: "EventType");
 
             migrationBuilder.DropTable(
+                name: "DocumentCategory");
+
+            migrationBuilder.DropTable(
                 name: "Office");
 
             migrationBuilder.DropTable(
                 name: "City");
+
+            migrationBuilder.DropTable(
+                name: "Designation");
 
             migrationBuilder.DropTable(
                 name: "State");
