@@ -1,0 +1,44 @@
+﻿@using HGO.ASPNetCore.FileManager.ViewComponentsModel
+@model IEnumerable<DataAL.Models.DocumentCategory>
+
+@{
+    ViewData["Title"] = "File Categories";
+    int count = 1;
+}
+
+<h1>ডকুমেন্ট</h1>
+
+<div style="height: 550px; margin-bottom:20px">
+    @await Component.InvokeAsync("FileManagerComponent", new FileManagerModel()
+    {
+        Id = "FM1xxx", //an application-wide unique ID
+        RootFolder = AppDomain.CurrentDomain.BaseDirectory, //your desired path on server
+        ApiEndPoint = Url.Action("HgoApi"), //Url of previously created action method
+        Config = new FileManagerConfig() // othe configuration
+        })
+</div>
+@* <table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th style="width:5%">ক্রমিক</th>
+            <th style="width:25%">ডকুমেন্টের ধরণ</th>
+            <th style="width:50%">বর্ণনা</th>
+            <th style="width:20%">অ্যাকশন</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@count</td>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+                <td>
+                    <a asp-action="EditDocumentCategory" asp-route-id="@item.Id" class="btn btn-sm btn-primary">এডিট</a>
+                    <a asp-action="DeleteDocumentCategory" asp-route-id="@item.Id" class="btn btn-sm btn-danger" onclick="return confirm('আপনি কি ডকুমেন্টের ধরণটি মুছে ফেলতে চান?');">ডিলিট</a>
+                </td>
+            </tr>
+            count++;
+        }
+    </tbody>
+ *@

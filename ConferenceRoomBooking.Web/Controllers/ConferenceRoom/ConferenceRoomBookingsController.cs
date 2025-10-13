@@ -142,7 +142,7 @@ namespace ConferenceRoomBooking.Web.Controllers
                 ViewData["OfficeId"] = new SelectList(_context.Office, "OfficeId", "Name", conferenceRoomBooking.OfficeId);
                 return View(conferenceRoomBooking);
             }
-            if (file != null || file.Length > 0)
+            if (file != null && file.Length > 0)
             {
                 var fileName = Guid.NewGuid() + "-" + file.Name + Path.GetExtension(file.FileName);
                 var filePath = Path.Combine(_storagePath, fileName);
@@ -310,7 +310,7 @@ namespace ConferenceRoomBooking.Web.Controllers
             {
                 try
                 {
-                    if (file != null || file.Length >= 0)
+                    if (file != null && file.Length >= 0)
                     {
                         var fileName = Guid.NewGuid() + "-" + file.Name + Path.GetExtension(file.FileName);
                         var filePath = Path.Combine(_storagePath, fileName);

@@ -5,6 +5,7 @@
 using BusinessAL.DbContext;
 using BusinessAL.Repositories.BaseRepositories;
 using DataAL.Models;
+using HGO.ASPNetCore.FileManager;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,9 @@ builder.Services.AddHttpContextAccessor();
 
 // Add services to the container.  
 builder.Services.AddControllersWithViews();
+
+// HGO.AspNetCore.FileManager -------
+builder.Services.AddHgoFileManager();
 builder.Services.AddDbContext<RepositoryContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
@@ -59,6 +63,9 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapStaticAssets();
+// HGO.AspNetCore.FileManager -------
+app.UseHgoFileManager();
+//-----------------------------------
 app.MapControllerRoute(
    name: "default",
    pattern: "{controller=Home}/{action=Index}/{id?}")

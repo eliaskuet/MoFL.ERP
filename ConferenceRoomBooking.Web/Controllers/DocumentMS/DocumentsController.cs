@@ -1,26 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using BusinessAL.DbContext;
+using DataAL.Models;
+using HGO.ASPNetCore.FileManager.CommandsProcessor;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using BusinessAL.DbContext;
-using DataAL.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace ConferenceRoomBooking.Web.Controllers.DocumentMS
 {
     public class DocumentsController : Controller
     {
         private readonly RepositoryContext _context;
-        private readonly string _storagePath;
-
-        public DocumentsController(RepositoryContext context, IWebHostEnvironment env)
+        private readonly string _storagePath; 
+        private readonly IFileManagerCommandsProcessor _processor;
+        public DocumentsController(RepositoryContext context, IWebHostEnvironment env, IFileManagerCommandsProcessor processor)
         {
             _context = context;
+            _processor = processor;
             _storagePath = Path.Combine(env.WebRootPath, "uploads");
             if (!Directory.Exists(_storagePath))
                 Directory.CreateDirectory(_storagePath);
+        }
+        public async Task<IActionResult> FileManager()
+        {
+            return View();
+        }
+
+        [HttpPost, HttpGet]
+        public async Task<IActionResult> HgoApi(string id, string command, string parameters, IFormFile file)
+        {
+            return await _processor.ProcessCommandAsync(id, command, parameters, file);
         }
         public async Task<IActionResult> Index()
         {

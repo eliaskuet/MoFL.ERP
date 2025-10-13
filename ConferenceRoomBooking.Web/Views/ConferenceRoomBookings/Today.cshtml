@@ -39,7 +39,7 @@
                 string isCurrent = "true";
                 for (int i = 1; i <= meetings.Count; i++)
                 {
-                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="@(i - 1)" class="@isActive" aria-current="@isCurrent" aria-label="@meetings[i-1].Subject"></button>
+                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="@(i - 1)" class="@isActive" aria-current="@isCurrent" aria-label="@meetings[i - 1].Subject"></button>
                     isActive = string.Empty;
                     isCurrent = string.Empty;
                 }
@@ -54,13 +54,17 @@
                     <div class="carousel-item @isActive" data-bs-interval="1000" style="height: 200px !important;">
                         <div class="carousel-caption d-none d-md-block">
                             <h5>
-                                @meetings[i].Subject
+                                <a asp-action="Details" asp-route-id="@meetings[i].ConferenceRoomBookingId">
+                                    @meetings[i].Subject
+                                </a>
                                 <br /><br />
                                 @meetings[i].DateOfEvent
                             </h5>
-                            <p>@meetings[i].ContactPersonaName
-                            <br />
-                            @meetings[i].ContactPersonMobile</p>
+                            <p>
+                                @meetings[i].ContactPersonaName
+                                <br />
+                                @meetings[i].ContactPersonMobile
+                            </p>
                         </div>
                     </div>
                     isActive = string.Empty;

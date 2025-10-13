@@ -1,18 +1,32 @@
-using System.Diagnostics;
 using ConferenceRoomBooking.Web.Models;
+using DataAL.ViewModels;
+using HGO.ASPNetCore.FileManager.CommandsProcessor;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using DataAL.ViewModels;
+using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 
 namespace ConferenceRoomBooking.Web.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IFileManagerCommandsProcessor _processor;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IFileManagerCommandsProcessor processor)
         {
+            _processor = processor;
             _logger = logger;
+        }
+
+        [HttpPost, HttpGet]
+        public async Task<IActionResult> HgoApi(string id, string command, string parameters, IFormFile file)
+        {
+            return await _processor.ProcessCommandAsync(id, command, parameters, file);
+        }
+        public IActionResult FileManager()
+        {
+            return View();
         }
 
         public IActionResult Index()

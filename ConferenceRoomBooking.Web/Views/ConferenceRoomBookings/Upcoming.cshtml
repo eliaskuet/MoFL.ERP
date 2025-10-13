@@ -53,7 +53,6 @@ else
                         <th>
                             #
                         </th>
-                        <th>তারিখ</th>
                         <th>
                             @Html.DisplayNameFor(model => model.DateOfEvent)
                         </th>
@@ -79,7 +78,7 @@ else
                 <tbody>
                     <tr class="table-active">
                         <td colspan="7">
-                            <strong class="text-success"> @currentList.First().DateOfEvent.ToString("dd-MM-yyyy") তারিখে @currentList.Count-টি অনুষ্ঠান</strong>
+                            <strong class="text-success" style="font-size: large;"> @currentList.First().DateOfEvent.ToString("dd-MM-yyyy") তারিখে @currentList.Count-টি অনুষ্ঠান</strong>
                         </td>
                     </tr>
                     @foreach (var item in currentList)
