@@ -233,7 +233,10 @@ namespace ConferenceRoomBooking.Web.Controllers
             {
                 try
                 {
-                    _context.Entry(oldBooking).State = EntityState.Detached;
+                    if (oldBooking!=null)
+                    {
+                        _context.Entry(oldBooking).State = EntityState.Detached;
+                    }
                     //_context.Entry(existingBooking).State = EntityState.Detached;
                     _context.Update(conferenceRoomBooking);
                     await _context.SaveChangesAsync();
@@ -319,6 +322,12 @@ namespace ConferenceRoomBooking.Web.Controllers
                         conferenceRoomBooking.OfficeOrderUrl = filePath;
                         conferenceRoomBooking.OriginalName = file.FileName;
                     }
+
+                    if (existingBooking != null)
+                    {
+                        _context.Entry(existingBooking).State = EntityState.Detached;
+                    }
+
                     _context.Update(conferenceRoomBooking);
                     await _context.SaveChangesAsync();
                 }
